@@ -57,9 +57,9 @@ public class Controller implements Initializable {
         //wybór źródła muzyki (radio/płyta CD)
         musicSource="radio";
 
-        Media sound = new Media(new File("src\\sample\\RubicTurnSound.mp3").toURI().toString());
-        mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
+        //Media sound = new Media(new File("src\\sample\\RubicTurnSound.mp3").toURI().toString());
+       // mediaPlayer = new MediaPlayer(sound);
+        //mediaPlayer.play();
 
     }
 }

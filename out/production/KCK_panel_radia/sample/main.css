@@ -19,7 +19,7 @@
  .button:hover{
 
  -fx-background-image: url('t.png');
-   -fx-background-size: 30px;
+   -fx-background-size: 100px;
    -fx-background-repeat: no-repeat;
     -fx-background-position: 90%;
      -fx-background-color: transparent;
@@ -27,5 +27,34 @@
       -fx-effect: dropshadow( three-pass-box , green , 5, 0.4 , 0 , 1 );
            -fx-focus-color: transparent;
  }
+
+ #gif{
+    -fx-background-image: url('signal.gif');
+    -fx-background-size: 100px;
+ }
+
+#pwr{
+    -fx-background-image: url('PWR.png');
+    -fx-background-size: 100px;
+ }
+ #band{
+     -fx-background-image: url('BAND.png');
+     -fx-background-size: 100px;
+  }
+  #station1,#station2,#station3,#station4,#station5,#station6{
+      -fx-background-image: url('BAND.png');
+      -fx-background-size: 100px;
+   }
+
+   #next{
+      -fx-background-image: url('Zmiana_czestotliwosci_w_prawo.png');
+      -fx-background-size: 100px;
+  }
+
+  #pref{
+       -fx-background-image: url('Zmiana_czestotliwosci_w_lewo.png');
+       -fx-background-size: 100px;
+    }
+
 
 

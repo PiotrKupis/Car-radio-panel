@@ -1,97 +1,91 @@
 
 #radioPanel{
-    -fx-background-image: url("panel_radia.png");
+    -fx-background-image: url("images/panel_radia.png");
     -fx-background-repeat: stretch;
     -fx-background-position: center center;
-
 }
 
-
 .button{
-  -fx-background-image: url('t.png');
-  -fx-background-size: 60px;
-  -fx-background-repeat: no-repeat;
-   -fx-background-position: 90%;
+    -fx-background-size: 60px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 90%;
     -fx-background-color: transparent;
 }
 
 
  .button:hover{
 
- -fx-background-image: url('t.png');
-   -fx-background-size: 100px;
-   -fx-background-repeat: no-repeat;
+    -fx-background-repeat: no-repeat;
     -fx-background-position: 90%;
-     -fx-background-color: transparent;
-
-      -fx-effect: dropshadow( three-pass-box , green , 5, 0.4 , 0 , 1 );
-           -fx-focus-color: transparent;
+    -fx-background-color: transparent;
+    -fx-effect: dropshadow( three-pass-box , green , 5, 0.4 , 0 , 1 );
+    -fx-focus-color: transparent;
  }
 
  #gif{
-    -fx-background-image: url('signal.gif');
+    -fx-background-image: url('images/signal.gif');
     -fx-background-size: 100px;
  }
 
 #pwr{
-    -fx-background-image: url('PWR.png');
+    -fx-background-image: url('images/PWR.png');
     -fx-background-size: 170px;
  }
 #band{
- -fx-background-image: url('BAND.png');
+ -fx-background-image: url('images/BAND.png');
  -fx-background-size: 80px;
 }
 #station1,#station2,#station3,#station4,#station5,#station6{
-  -fx-background-image: url('BAND.png');
+  -fx-background-image: url('images/BAND.png');
   -fx-background-size: 80px;
 }
 
 #next{
-  -fx-background-image: url('Zmiana_czestotliwosci_w_prawo.png');
+  -fx-background-image: url('images/Zmiana_czestotliwosci_w_prawo.png');
   -fx-background-size: 120px;
 }
 
 #pref{
-   -fx-background-image: url('Zmiana_czestotliwosci_w_lewo.png');
+   -fx-background-image: url('images/Zmiana_czestotliwosci_w_lewo.png');
    -fx-background-size: 120px;
 }
 #efectbutton{
--fx-background-image: url('efectbutton.png');
+-fx-background-image: url('images/efectbutton.png');
 -fx-background-size: 100px;
 }
 #efectbutton {
-  -fx-background-image: url('efectbutton.png');
+  -fx-background-image: url('images/efectbutton.png');
   -fx-background-size: 120px;
 }
 #volup {
-    -fx-background-image: url('vol+.png');
+    -fx-background-image: url('images/vol+.png');
     -fx-background-size: 110px;
 }
 #voldown {
-    -fx-background-image: url('vol-.png');
+    -fx-background-image: url('images/vol-.png');
     -fx-background-size: 110px;
 }
 #func {
-    -fx-background-image: url('func.png');
+    -fx-background-image: url('images/func.png');
     -fx-background-size: 80px;
 }
 
 #eqxdss{
-    -fx-background-image: url('eq.png');
+    -fx-background-image: url('images/eq.png');
     -fx-background-size: 80px;
 }
 #avreg{
-    -fx-background-image: url('sterowaniefunkcjami.png');
+    -fx-background-image: url('images/sterowaniefunkcjami.png');
     -fx-background-size: 150px;
 }
 #disp
 {
-    -fx-background-image: url('sterowaniefunkcjami.png');
+    -fx-background-image: url('images/sterowaniefunkcjami.png');
     -fx-background-size: 250px;
 }
 #turnoff
 {
-    -fx-background-image: url('turnoff.png');
+    -fx-background-image: url('images/turnoff.png');
     -fx-background-size: 120px;
 }
 

@@ -43,12 +43,12 @@
             </VBox>
             <VBox prefHeight="150.0" prefWidth="119.0">
                <children>
-                  <Button fx:id="next" mnemonicParsing="false" prefHeight="174.0" prefWidth="119.0" text="Button" VBox.vgrow="ALWAYS">
+                  <Button fx:id="next" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="174.0" prefWidth="119.0" text="Button" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="pref" mnemonicParsing="false" prefHeight="178.0" prefWidth="140.0" text="Button">
+                  <Button fx:id="pref" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="178.0" prefWidth="140.0" text="Button">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -104,22 +104,22 @@
                   <Insets left="-32.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="station1" mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" text="Button">
+            <Button fx:id="station1" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="30.0" prefWidth="107.0" text="Button">
                <HBox.margin>
                   <Insets left="-25.0" top="26.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="station2" mnemonicParsing="false" prefHeight="30.0" prefWidth="111.0" text="Button">
+            <Button fx:id="station2" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="30.0" prefWidth="111.0" text="Button">
                <HBox.margin>
                   <Insets left="-25.0" top="26.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="station3" mnemonicParsing="false" prefHeight="31.0" prefWidth="82.0" text="Button">
+            <Button fx:id="station3" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="31.0" prefWidth="82.0" text="Button">
                <HBox.margin>
                   <Insets top="26.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="station4" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" text="Button">
+            <Button fx:id="station4" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="35.0" prefWidth="75.0" text="Button">
                <HBox.margin>
                   <Insets left="2.0" top="25.0" />
                </HBox.margin>

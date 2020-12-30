@@ -16,6 +16,7 @@ public class RadioStation {
 
         Media sound = new Media(new File("src\\sample\\songs\\" + radioStationName + ".mp3").toURI().toString());
         this.mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
         mediaPlayer.setMute(true);
     }

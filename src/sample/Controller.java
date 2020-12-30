@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -73,123 +74,196 @@ public class Controller implements Initializable {
     private long pressTime;
 
     @FXML
+    void changeMusicSource(ActionEvent event) {
+
+        if(musicSource.equals("radio")){
+            musicSource="CD";
+
+            if(noiseMediaPlayer.getStatus().equals(MediaPlayer.Status.PLAYING))
+                noiseMediaPlayer.pause();
+            else{
+                for(RadioStation rs:radioStations){
+                    if(rs.getRadioStationName().equals(currentRadioStation)){
+                        rs.getMediaPlayer().pause();
+                    }
+                }
+            }
+
+            File file = new File("src\\sample\\CD");
+            for (File fileEntry : file.listFiles()) {
+                System.out.println(fileEntry.getName());
+            }
+            //TODO dodanie MediaPlayerów do listy i ich odtwarzanie
+        }
+        else{
+            musicSource="radio";
+
+            if(currentRadioStation==null)
+                noiseMediaPlayer.play();
+            else{
+                for(RadioStation rs:radioStations){
+                    if(rs.getRadioStationName().equals(currentRadioStation)){
+                        rs.getMediaPlayer().play();
+                    }
+                }
+            }
+        }
+    }
+
+    @FXML
+    public void changeVolume(ActionEvent event) {
+
+        String buttonId=((Button)event.getSource()).getId();
+
+        if(buttonId.equals("volup")){
+            if(musicVolume<0.9)
+                musicVolume+=0.1;
+        }
+        else{
+            if(musicVolume>0.05)
+                musicVolume-=0.1;
+        }
+
+        if(noiseMediaPlayer.getStatus().equals(MediaPlayer.Status.PLAYING))
+            noiseMediaPlayer.setVolume(musicVolume);
+        else{
+            for(RadioStation rs:radioStations){
+                if(rs.getRadioStationName().equals(currentRadioStation)){
+                    rs.getMediaPlayer().setVolume(musicVolume);
+                }
+            }
+        }
+    }
+
+    private void radioChange(String buttonId){
+
+        if(noiseMediaPlayer.getStatus().equals(MediaPlayer.Status.PLAYING))
+            noiseMediaPlayer.pause();
+
+        if(System.currentTimeMillis() - pressTime > 1000){
+
+            //zapisanie stacji do przytrzymanego przycisku
+            switch(buttonId){
+                case "station1":
+                    savedRadioStation1=currentRadioStation;
+                    break;
+                case "station2":
+                    savedRadioStation2=currentRadioStation;
+                    break;
+                case "station3":
+                    savedRadioStation3=currentRadioStation;
+                    break;
+                case "station4":
+                    savedRadioStation4=currentRadioStation;
+                    break;
+                case "station5":
+                    savedRadioStation5=currentRadioStation;
+                    break;
+                case "station6":
+                    savedRadioStation6=currentRadioStation;
+                    break;
+            }
+
+            Media sound = new Media(new File("src\\sample\\songs\\notification.mp3").toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.setVolume(musicVolume);
+            mediaPlayer.play();
+        }
+        else{
+            //zmiana częstotliwości radia
+            if(buttonId.equals("next") || buttonId.equals("pref")) {
+
+                int oldFrequency=currentFrequency;
+                if (buttonId.equals("next"))
+                    currentFrequency += 1;
+                else
+                    currentFrequency -= 1;
+
+                System.out.println("nowa czestotliwosc: "+currentFrequency);
+
+                currentRadioStation=null;
+                for(RadioStation rs:radioStations){
+
+                    //włączenie nowej stacji
+                    if(rs.getFrequency()==currentFrequency){
+                        currentRadioStation=rs.getRadioStationName();
+                        rs.getMediaPlayer().setVolume(musicVolume);
+                        rs.getMediaPlayer().setMute(false);
+                    }
+
+                    //wyciszenie starej stacji
+                    if(rs.getFrequency()==oldFrequency){
+                        rs.getMediaPlayer().setMute(true);
+                    }
+                }
+            }
+            else{
+                //właczenie zapisanej wcześniej stacji
+                String oldRadioStation=currentRadioStation;
+                switch(buttonId){
+                    case "station1":
+                        currentRadioStation=savedRadioStation1;
+                        break;
+                    case "station2":
+                        currentRadioStation=savedRadioStation2;
+                        break;
+                    case "station3":
+                        currentRadioStation=savedRadioStation3;
+                        break;
+                    case "station4":
+                        currentRadioStation=savedRadioStation4;
+                        break;
+                    case "station5":
+                        currentRadioStation=savedRadioStation5;
+                        break;
+                    case "station6":
+                        currentRadioStation=savedRadioStation6;
+                        break;
+                }
+
+                for(RadioStation rs:radioStations){
+
+                    //włączenie nowej stacji
+                    if(rs.getRadioStationName().equals(currentRadioStation)){
+                        currentFrequency=rs.getFrequency();
+                        rs.getMediaPlayer().setVolume(musicVolume);
+                        rs.getMediaPlayer().setMute(false);
+                    }
+
+                    //wyciszenie starej stacji
+                    if(rs.getRadioStationName().equals(oldRadioStation)){
+                        rs.getMediaPlayer().setMute(true);
+                    }
+                }
+            }
+
+            //nie znaleziono stacji - szum
+            if(currentRadioStation==null){
+                noiseMediaPlayer.play();
+                noiseMediaPlayer.setVolume(musicVolume);
+            }
+        }
+    }
+
+    @FXML
     void changeRadioStation(MouseEvent event) {
 
         String buttonId=((Button)event.getSource()).getId();
 
-        //tutaj bedzie sprawdzenie czy muzyka ma być odtwarzana z radia czy z płyty
-
-        //mierzenie czasu naciśniecia
-        if(event.getEventType().equals(MouseEvent.MOUSE_PRESSED)){
-            pressTime = System.currentTimeMillis();
-        }
-        else{
-            if(noiseMediaPlayer.getStatus().equals(MediaPlayer.Status.PLAYING))
-                noiseMediaPlayer.pause();
-
-            if(System.currentTimeMillis() - pressTime > 1000){
-
-                //zapisanie stacji do przytrzymanego przycisku
-                switch(buttonId){
-                    case "station1":
-                        savedRadioStation1=currentRadioStation;
-                        break;
-                    case "station2":
-                        savedRadioStation2=currentRadioStation;
-                        break;
-                    case "station3":
-                        savedRadioStation3=currentRadioStation;
-                        break;
-                    case "station4":
-                        savedRadioStation4=currentRadioStation;
-                        break;
-                    case "station5":
-                        savedRadioStation5=currentRadioStation;
-                        break;
-                    case "station6":
-                        savedRadioStation6=currentRadioStation;
-                        break;
-                }
-
-                Media sound = new Media(new File("src\\sample\\songs\\notification.mp3").toURI().toString());
-                MediaPlayer mediaPlayer = new MediaPlayer(sound);
-                mediaPlayer.play();
+        //sprawdzenie czy muzyka jest odtwarzana z radia czy z płyty
+        if(musicSource.equals("radio")){
+            //mierzenie czasu naciśniecia
+            if(event.getEventType().equals(MouseEvent.MOUSE_PRESSED)){
+                pressTime = System.currentTimeMillis();
             }
             else{
-                //zmiana częstotliwości radia
-                if(buttonId.equals("next") || buttonId.equals("pref")) {
-
-                    int oldFrequency=currentFrequency;
-                    if (buttonId.equals("next"))
-                        currentFrequency += 1;
-                    else
-                        currentFrequency -= 1;
-
-                    System.out.println("nowa czestotliwosc: "+currentFrequency);
-
-                    currentRadioStation=null;
-                    for(RadioStation rs:radioStations){
-
-                        //włączenie nowej stacji
-                        if(rs.getFrequency()==currentFrequency){
-                            currentRadioStation=rs.getRadioStationName();
-                            rs.getMediaPlayer().setMute(false);
-                        }
-
-                        //wyciszenie starej stacji
-                        if(rs.getFrequency()==oldFrequency){
-                            rs.getMediaPlayer().setMute(true);
-                        }
-                    }
-                }
-                else{
-                    //właczenie zapisanej wcześniej stacji
-                    String oldRadioStation=currentRadioStation;
-                    switch(buttonId){
-                        case "station1":
-                            currentRadioStation=savedRadioStation1;
-                            break;
-                        case "station2":
-                            currentRadioStation=savedRadioStation2;
-                            break;
-                        case "station3":
-                            currentRadioStation=savedRadioStation3;
-                            break;
-                        case "station4":
-                            currentRadioStation=savedRadioStation4;
-                            break;
-                        case "station5":
-                            currentRadioStation=savedRadioStation5;
-                            break;
-                        case "station6":
-                            currentRadioStation=savedRadioStation6;
-                            break;
-                    }
-
-                    for(RadioStation rs:radioStations){
-
-                        //włączenie nowej stacji
-                        if(rs.getRadioStationName().equals(currentRadioStation)){
-                            currentFrequency=rs.getFrequency();
-                            rs.getMediaPlayer().setMute(false);
-                        }
-
-                        //wyciszenie starej stacji
-                        if(rs.getRadioStationName().equals(oldRadioStation)){
-                            rs.getMediaPlayer().setMute(true);
-                        }
-                    }
-                }
-
-                //nie znaleziono stacji - szum
-                if(currentRadioStation==null){
-                    noiseMediaPlayer.play();
-                }
-
-                //dodać ustawienie globalnej głośności nowej stacji
+                radioChange(buttonId);
             }
         }
-    };
+        else{
+            //TODO przełacza się na kolejny utwór z listy utworów na płycie
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -209,6 +283,7 @@ public class Controller implements Initializable {
         noiseMediaPlayer=new MediaPlayer(sound);
         noiseMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         noiseMediaPlayer.play();
-        musicVolume=noiseMediaPlayer.getVolume();
+        noiseMediaPlayer.setVolume(0.5);
+        musicVolume=0.5;
     }
 }

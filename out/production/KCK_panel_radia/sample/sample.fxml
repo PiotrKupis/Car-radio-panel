@@ -29,12 +29,12 @@
          <children>
             <VBox prefHeight="150.0" prefWidth="122.0">
                <children>
-                  <Button fx:id="volup" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="55.0" prefWidth="77.0" text="Button">
+                  <Button fx:id="volup" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#changeVolume" prefHeight="55.0" prefWidth="77.0" text="Button">
                      <VBox.margin>
                         <Insets left="63.0" top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="voldown" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="54.0" prefWidth="62.0" text="Button">
+                  <Button fx:id="voldown" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#changeVolume" prefHeight="54.0" prefWidth="62.0" text="Button">
                      <VBox.margin>
                         <Insets left="60.0" top="20.0" />
                      </VBox.margin>
@@ -79,7 +79,7 @@
             </VBox>
             <VBox prefHeight="150.0" prefWidth="93.0">
                <children>
-                  <Button fx:id="func" mnemonicParsing="false" prefHeight="189.0" prefWidth="78.0" text="Button">
+                  <Button fx:id="func" mnemonicParsing="false" onAction="#changeMusicSource" prefHeight="189.0" prefWidth="78.0" text="Button">
                      <VBox.margin>
                         <Insets left="-19.0" />
                      </VBox.margin>

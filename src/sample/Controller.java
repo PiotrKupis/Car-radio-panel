@@ -162,6 +162,9 @@ public class Controller implements Initializable {
                 case "station6":
                     savedRadioStation6=currentRadioStation;
                     break;
+                case "next":
+                    findnearbystation();
+                    break;
             }
 
             Media sound = new Media(new File("src\\sample\\songs\\notification.mp3").toURI().toString());
@@ -273,7 +276,9 @@ public class Controller implements Initializable {
         radioStations.add(new RadioStation("Radio Lodz",102));
         radioStations.add(new RadioStation("Radio Eska",105));
         radioStations.add(new RadioStation("Radio ZET",108));
-
+        radioStations.add(new RadioStation("Radio Los Sanots",110));
+        radioStations.add(new RadioStation("Radio x",120));
+        radioStations.add(new RadioStation("Radio z",130));
         currentFrequency=104;
         //wybór źródła muzyki (radio/płyta CD)
         musicSource="radio";
@@ -285,5 +290,37 @@ public class Controller implements Initializable {
         noiseMediaPlayer.play();
         noiseMediaPlayer.setVolume(0.5);
         musicVolume=0.5;
+    }
+    private void findnearbystation()
+    {
+        boolean endwhile = true;
+        int oldFrequency=currentFrequency;
+        currentRadioStation=null;
+        while (endwhile)
+        {
+            // sprawdzanie zakresu czestotliwosci
+            currentFrequency++;
+            if(currentFrequency>130)
+                currentFrequency = 80;
+
+            for(RadioStation rs:radioStations)
+            {
+                //wyciszenie starej stacji
+                if(rs.getFrequency()==oldFrequency){
+                    rs.getMediaPlayer().setMute(true);
+                }
+
+                //włączenie nowej stacji
+                if(rs.getFrequency()==currentFrequency){
+                    currentRadioStation=rs.getRadioStationName();
+                    rs.getMediaPlayer().setVolume(musicVolume);
+                    rs.getMediaPlayer().setMute(false);
+                    endwhile = false;
+                    break;
+
+                }
+            }
+        }
+
     }
 }

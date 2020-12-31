@@ -253,7 +253,7 @@ public class Controller implements Initializable {
                         currentRadioStation=savedRadioStation6;
                         break;
                 }
-                setText(currentFrequency,buttonId);
+
 
                 for(RadioStation rs:radioStations){
 
@@ -269,6 +269,7 @@ public class Controller implements Initializable {
                         rs.getMediaPlayer().setMute(true);
                     }
                 }
+                setText(currentFrequency,buttonId);
             }
 
             //nie znaleziono stacji - szum

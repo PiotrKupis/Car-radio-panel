@@ -134,6 +134,24 @@ public class Controller implements Initializable {
             }
         }
     }
+    @FXML
+    public void muteRadio(MouseEvent event)
+    {
+        String buttonId=((Button)event.getSource()).getId();
+
+        if(buttonId.equals("pwr"))
+            musicVolume = 0;
+
+        if(noiseMediaPlayer.getStatus().equals(MediaPlayer.Status.PLAYING))
+            noiseMediaPlayer.setVolume(musicVolume);
+        else{
+            for(RadioStation rs:radioStations){
+                if(rs.getRadioStationName().equals(currentRadioStation)){
+                    rs.getMediaPlayer().setVolume(musicVolume);
+                }
+            }
+        }
+    }
 
     private void radioChange(String buttonId){
 
@@ -291,6 +309,9 @@ public class Controller implements Initializable {
         noiseMediaPlayer.setVolume(0.5);
         musicVolume=0.5;
     }
+    /**
+    Metoda do znajdywania najblizej stacji
+     */
     private void findnearbystation()
     {
         boolean endwhile = true;

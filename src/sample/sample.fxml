@@ -94,7 +94,7 @@
          </children></HBox>
       <HBox prefHeight="79.0" prefWidth="1175.0">
          <children>
-            <Button fx:id="pwr" mnemonicParsing="false" prefHeight="30.0" prefWidth="134.0" text="Button">
+            <Button fx:id="pwr" onMousePressed="#muteRadio" mnemonicParsing="false" prefHeight="30.0" prefWidth="134.0" text="Button">
                <HBox.margin>
                   <Insets left="170.0" top="28.0" />
                </HBox.margin>

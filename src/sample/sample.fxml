@@ -60,7 +60,7 @@
                   <Insets left="140.0" top="55.0" />
                </HBox.margin>
             </ImageView>
-            <Label fx:id="display" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="94.0" prefWidth="444.0" text="F I    87.5" textAlignment="RIGHT" textFill="RED">
+            <Label fx:id="display" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="94.0" prefWidth="444.0" text="F I    87.5" textAlignment="RIGHT" textFill="GREEN">
                <font>
                   <Font size="64.0" />
                </font>

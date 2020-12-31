@@ -21,7 +21,10 @@
     -fx-effect: dropshadow( three-pass-box , green , 5, 0.4 , 0 , 1 );
     -fx-focus-color: transparent;
  }
-
+#display
+{
+    -fx-font-family: 'DS-Digital';
+}
  #gif{
     -fx-background-image: url('images/signal.gif');
     -fx-background-size: 100px;

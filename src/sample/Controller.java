@@ -1,10 +1,12 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -14,6 +16,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Controller implements Initializable {
 
@@ -160,7 +163,7 @@ public class Controller implements Initializable {
 
         if(System.currentTimeMillis() - pressTime > 1000){
 
-            //zapisanie stacji do przytrzymanego przycisku
+            //zapisanie stacji do przytrzymanego przycisku lub zmiana stacji automat
             switch(buttonId){
                 case "station1":
                     savedRadioStation1=currentRadioStation;
@@ -184,6 +187,13 @@ public class Controller implements Initializable {
                     findnearbystation();
                     break;
             }
+            if(buttonId.equals("next"))
+            {
+                setText(currentFrequency);
+            }else
+            {
+                setText(currentFrequency,buttonId);
+            }
 
             Media sound = new Media(new File("src\\sample\\songs\\notification.mp3").toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(sound);
@@ -201,6 +211,8 @@ public class Controller implements Initializable {
                     currentFrequency -= 1;
 
                 System.out.println("nowa czestotliwosc: "+currentFrequency);
+
+                setText(currentFrequency);
 
                 currentRadioStation=null;
                 for(RadioStation rs:radioStations){
@@ -241,6 +253,7 @@ public class Controller implements Initializable {
                         currentRadioStation=savedRadioStation6;
                         break;
                 }
+                setText(currentFrequency,buttonId);
 
                 for(RadioStation rs:radioStations){
 
@@ -289,6 +302,8 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
+
         radioStations=new ArrayList<>();
         radioStations.add(new RadioStation("RMF FM",99));
         radioStations.add(new RadioStation("Radio Lodz",102));
@@ -301,14 +316,42 @@ public class Controller implements Initializable {
         //wybór źródła muzyki (radio/płyta CD)
         musicSource="radio";
 
-        //zmienic dzwięć na szum radia
+
+
         Media sound = new Media(new File("src\\sample\\songs\\noise.mp3").toURI().toString());
         noiseMediaPlayer=new MediaPlayer(sound);
         noiseMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         noiseMediaPlayer.play();
         noiseMediaPlayer.setVolume(0.5);
         musicVolume=0.5;
+
+        // powitalny text
+        setText();
+
+        // dodanie gifa
+        //TODO zmiana scieżki
+        Image image = new javafx.scene.image.Image(getClass().getResource("signal.gif").toExternalForm());
+         gif.setImage(image);
+
+
     }
+    /**
+     * Metoda do ustawienie tekstu
+     */
+    private void setText(int Frequency,String text)
+    {
+        display.setText(text+" "+Frequency);
+    }
+    private void setText(int Frequency)
+    {
+        display.setText(" FM      "+Frequency);
+    }
+    private void setText()
+    {
+        display.setText("**Hello**");
+
+    }
+
     /**
     Metoda do znajdywania najblizej stacji
      */

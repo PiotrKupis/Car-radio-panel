@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,6 +20,8 @@ public class Main extends Application {
         Scene scene=new Scene(root,1175,352);
         scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
         primaryStage.setScene(scene);
+
+        primaryStage.setOnHidden(e -> Controller.shutdown());
         primaryStage.show();
 
     }

@@ -12,14 +12,14 @@
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="efectbutton" mnemonicParsing="false" prefHeight="34.0" prefWidth="87.0" text="Button">
+            <Button fx:id="efectbutton" mnemonicParsing="false" prefHeight="34.0" prefWidth="87.0">
                <HBox.margin>
                   <Insets left="53.0" top="45.0" />
                </HBox.margin>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></Button>
-            <Button fx:id="turnoff" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Button">
+            <Button fx:id="turnoff" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0">
                <HBox.margin>
                   <Insets left="930.0" top="45.0" />
                </HBox.margin></Button>
@@ -29,12 +29,15 @@
          <children>
             <VBox prefHeight="150.0" prefWidth="122.0">
                <children>
-                  <Button fx:id="volup" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#changeVolume" prefHeight="55.0" prefWidth="77.0" text="Button">
+                  <Button fx:id="volup" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#changeVolume" prefHeight="55.0" prefWidth="77.0" text="VOL+" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="63.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="voldown" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#changeVolume" prefHeight="54.0" prefWidth="62.0" text="Button">
+                  <Button fx:id="voldown" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#changeVolume" prefHeight="54.0" prefWidth="62.0" text="VOL-" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="60.0" top="20.0" />
                      </VBox.margin>
@@ -43,19 +46,19 @@
             </VBox>
             <VBox prefHeight="150.0" prefWidth="119.0">
                <children>
-                  <Button fx:id="next" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="174.0" prefWidth="119.0" text="Button" VBox.vgrow="ALWAYS">
+                  <Button fx:id="next" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="174.0" prefWidth="119.0" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="pref" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="178.0" prefWidth="140.0" text="Button">
+                  <Button fx:id="pref" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="178.0" prefWidth="140.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                   </Button>
                </children>
             </VBox>
-            <ImageView fx:id="gif" fitHeight="55.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="gif" fitHeight="74.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
                   <Insets left="140.0" top="55.0" />
                </HBox.margin>
@@ -70,58 +73,71 @@
             </Label>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="142.0">
                <children>
-                  <Button fx:id="avreg" mnemonicParsing="false" prefHeight="150.0" prefWidth="156.0" text="Button">
+                  <Button fx:id="avreg" mnemonicParsing="false" prefHeight="150.0" prefWidth="156.0">
                      <VBox.margin>
-                        <Insets />
+                        <Insets bottom="5.0" left="3.0" />
                      </VBox.margin>
                   </Button>
                </children>
             </VBox>
             <VBox prefHeight="150.0" prefWidth="93.0">
                <children>
-                  <Button fx:id="func" mnemonicParsing="false" onAction="#changeMusicSource" prefHeight="189.0" prefWidth="78.0" text="Button">
+                  <Button fx:id="func" mnemonicParsing="false" onAction="#changeMusicSource" prefHeight="189.0" prefWidth="78.0" text="FUNC" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="-19.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="eqxdss" mnemonicParsing="false" prefHeight="198.0" prefWidth="80.0" text="Button">
+                  <Button fx:id="eqxdss" mnemonicParsing="false" prefHeight="198.0" prefWidth="80.0" text="CD/XDSS" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <VBox.margin>
                         <Insets left="-19.0" top="15.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
                   </Button>
                </children>
             </VBox>
          </children></HBox>
       <HBox prefHeight="79.0" prefWidth="1175.0">
          <children>
-            <Button fx:id="pwr" onMousePressed="#muteRadio" mnemonicParsing="false" prefHeight="30.0" prefWidth="134.0" text="Button">
+            <Button fx:id="pwr" mnemonicParsing="false" onMousePressed="#muteRadio" prefHeight="30.0" prefWidth="134.0" textFill="#fdfdfd">
                <HBox.margin>
                   <Insets left="170.0" top="28.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="band" mnemonicParsing="false" prefHeight="42.0" prefWidth="70.0" text="Button">
+            <Button fx:id="band" mnemonicParsing="false" prefHeight="42.0" prefWidth="70.0" text="AMF" textFill="WHITE">
                <HBox.margin>
                   <Insets left="-32.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="station1" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="30.0" prefWidth="107.0" text="Button">
+            <Button fx:id="station1" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="30.0" prefWidth="107.0" text="      FM1" textFill="WHITE" wrapText="true">
                <HBox.margin>
                   <Insets left="-25.0" top="26.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="station2" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="30.0" prefWidth="111.0" text="Button">
+            <Button fx:id="station2" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="30.0" prefWidth="111.0" text="       FM2" textFill="WHITE">
                <HBox.margin>
                   <Insets left="-25.0" top="26.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="station3" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="31.0" prefWidth="82.0" text="Button">
+            <Button fx:id="station3" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="31.0" prefWidth="82.0" text="FM3" textFill="WHITE">
                <HBox.margin>
                   <Insets top="26.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="station4" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="35.0" prefWidth="75.0" text="Button">
+            <Button fx:id="station4" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="35.0" prefWidth="75.0" text="FM4" textFill="WHITE">
                <HBox.margin>
                   <Insets left="2.0" top="25.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="station5" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="35.0" prefWidth="75.0" text="FM5" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="2.0" top="25.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="station6" mnemonicParsing="false" onMousePressed="#changeRadioStation" onMouseReleased="#changeRadioStation" prefHeight="35.0" prefWidth="75.0" text="FM6" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="4.0" top="25.0" />
                </HBox.margin>
             </Button>
          </children></HBox>

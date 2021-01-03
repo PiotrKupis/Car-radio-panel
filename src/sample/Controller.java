@@ -21,7 +21,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Controller implements Initializable {
-
     @FXML
     private VBox radioPanel;
     @FXML
@@ -577,5 +576,6 @@ public class Controller implements Initializable {
                 }
             }
         }
+        displayAfterDelay("    "+currentFrequency+"    FM",currentRadioStation,1000);
     }
 }

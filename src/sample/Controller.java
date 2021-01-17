@@ -493,7 +493,7 @@ public class Controller implements Initializable {
         noiseMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         noiseMediaPlayer.play();
         noiseMediaPlayer.setVolume(0.5);
-        musicVolume=0.5;
+        musicVolume=0.2;
 
         // dodanie gifa
         //TODO zmiana scieżki
